@@ -41,6 +41,7 @@ Parameter | Required | Description
  `products` | true | A space-separated list of products that your application is requesting access to.
  `state` | false | An optional value included as a query parameter in the `redirect_uri` back to your application. This value is often used to identify a user and/or prevent cross-site request forgery.
  `payroll_provider` | false | An optional parameter that allows users to bypass the provider selection screen. Compatible payrolls are: `adp_workforce_now`, `bamboo_hr`, `gusto`, `insperity`, `justworks`, `paychex`, `paylocity`, `quickbooks`, `rippling`, `adp_run`, `square_payroll`, `trinet`, and `zenefits`.
+ `assisted` | false | An optional parameter that enables the [Assisted Finch API](../Assisted/1-Overview.md).
 
 **Example**
 
@@ -108,9 +109,10 @@ curl https://api.tryfinch.com/auth/token \
 
 **Response**
 
-Parameter | Description
-----------|-------------
-`access_token` | A string representing an access token used to make requests to the Finch API. The access token has does not expire, so please store it securely in your database.
+Parameter | Required | Description
+----------|----------| -----------
+`access_token` | true | A string representing an access token used to make requests to the Finch API. The access token has does not expire, so please store it securely in your database.
+`assisted` | true | A string representing whether the employer is connect through the [Assisted API]('../Assisted/1-Overview.md).
 
 
 **Example response**
@@ -118,6 +120,7 @@ Parameter | Description
 ```json
 {
   "access_token": "cf7ba7e9-8c5d-417d-a99f-c386cfc235cc",
+  "assisted": false,
 }
 ```
 
