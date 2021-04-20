@@ -14,7 +14,7 @@ The Assisted API uses a system supported by all payroll and HR systems, the addi
 
 ### Employer
 1. Employer lands on the Connect `select` page.
-2. Employer chooses a payroll provider Finch don't support via an API connection.
+2. Employer chooses a payroll provider that Finch does not support via an API connection.
 3. Instead of showing the credential login page, we display a page with the instructions to allow `<application_name>` to be added as an admin user to their payroll account.
 4. The employer will provide a contact email address.
 5. The employer clicks on confirm and proceeds with the application's normal flow.
@@ -29,3 +29,18 @@ The Assisted API uses a system supported by all payroll and HR systems, the addi
 5. An application requests certain data points and Finch will return an HTTP status code 202 with an empty body indicating that the token is for Assisted connection requests and we have queued up the request for our Product Operations team.
 6. The application polls the `GET /employer/{endpoint}/assisted/{job_id}` to check the status of the job and fulfilled data.
 
+Connect manual access token vs not-connect tokens (out of scope)
+- how to expose?
+- returning the state of a connection.
+
+How does the requests get to Diana (Queue) (out scope)
+- Writing a row in the Airtable (link to S3)
+
+Read
+- When does Diana update that? We will update it every 7 days.
+
+Write (out of scope)
+
+Engineering (Eng hours 1 day)
+- Allow workflow to add data to S3. Validation of the data.
+- Add middleware to read from the cache.
